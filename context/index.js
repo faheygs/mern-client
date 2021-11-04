@@ -19,7 +19,10 @@ const UserProvider = ({ children }) => {
     const token = state && state.token ? state.token : '';
     axios.defaults.baseURL = process.env.NEXT_PUBLIC_API;
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    axios.defaults.headers = {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        };
 
     axios.interceptors.response.use(
         function(response) {
