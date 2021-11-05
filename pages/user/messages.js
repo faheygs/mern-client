@@ -60,7 +60,7 @@ const Messages = () => {
     const sendMessage = async () => {
         
         try {
-            const { data } = await axios.put(`/set-message`, {
+            const { data } = await axios.put(`/set-message`, { method: 'put' }, {
                 message,
                 id: chatUser._id
             });
