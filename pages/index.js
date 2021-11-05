@@ -6,7 +6,7 @@ import Post from "../components/cards/Post";
 import Head from 'next/head';
 import io from 'socket.io-client';
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
+const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, { path: '/socket.io'}, {
     reconnection: true
 });
 

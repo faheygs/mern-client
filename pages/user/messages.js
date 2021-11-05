@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Avatar } from 'antd';
 import io from 'socket.io-client';
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
+const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, { path: '/socket.io'}, {
     reconnection: true
 });
 
