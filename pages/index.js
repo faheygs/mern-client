@@ -4,7 +4,7 @@ import ParallaxBG from "../components/cards/ParallaxBG";
 import axios from "axios";
 import Post from "../components/cards/Post";
 import Head from 'next/head';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 // const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
 //     reconnection: true

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { UserContext } from "../../context";
 import { useRouter } from "next/router";
 import { Avatar } from 'antd';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 // const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
 //     reconnection: true
