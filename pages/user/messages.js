@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 import { Avatar } from 'antd';
 import io from 'socket.io-client';
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
-    reconnection: true
-});
+// const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
+//     reconnection: true
+// });
 
 const Messages = () => {
     const [state, setState] = useContext(UserContext);
@@ -19,12 +19,12 @@ const Messages = () => {
 
     const router = useRouter();
 
-    useEffect(() => {
-        socket.on('new-message', (newMessage) => {
-            setMessages(newMessage);
-            chatWindow();
-        });
-    }, []);
+    // useEffect(() => {
+    //     socket.on('new-message', (newMessage) => {
+    //         setMessages(newMessage);
+    //         chatWindow();
+    //     });
+    // }, []);
 
     useEffect(() => {
         if(state && state.token) {
@@ -60,7 +60,7 @@ const Messages = () => {
     const sendMessage = async () => {
         
         try {
-            const { data } = await axios.put(`/set-message`, { method: 'put' }, {
+            const { data } = await axios.put(`/set-message`, {
                 message,
                 id: chatUser._id
             });
@@ -73,7 +73,7 @@ const Messages = () => {
                 localStorage.setItem('auth', JSON.stringify(auth));
 
                 setState({ ...state, user: data });
-                socket.emit('new-message', data.messages);
+                // socket.emit('new-message', data.messages);
             }
         } catch(e) {
             console.log(e);

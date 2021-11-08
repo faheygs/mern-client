@@ -6,9 +6,9 @@ import Post from "../components/cards/Post";
 import Head from 'next/head';
 import io from 'socket.io-client';
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
-    reconnection: true
-});
+// const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
+//     reconnection: true
+// });
 
 const Home = () => {
     const [state, setState] = useContext(UserContext);
@@ -17,9 +17,9 @@ const Home = () => {
 
     useEffect(() => {
         loadPosts();
-        socket.on('new-post', (newPost) => {
-            setNewsFeed([newPost, ...posts]);
-        });
+        // socket.on('new-post', (newPost) => {
+        //     setNewsFeed([newPost, ...posts]);
+        // });
     }, []);
 
     const loadPosts = async () => {
