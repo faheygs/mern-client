@@ -72,7 +72,11 @@ const Home = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post('/create-post', { content, image });
+            const { data } = await axios.post('/create-post', {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            },{ content, image });
             if(data.error) {
                 toast.error(data.error);
             } else {
