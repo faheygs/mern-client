@@ -16,12 +16,16 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const { data } = await axios.get('/posts');
-        setNewsFeed([data, ...posts]);
+        loadPosts();
         socket.on('new-post', (newPost) => {
             setNewsFeed([newPost, ...posts]);
         });
     }, []);
+
+    const loadPosts = async () => {
+        const { data } = await axios.get('/posts');
+        setPosts(data);
+    };
 
     const head = () => {
         <Head>
