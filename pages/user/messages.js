@@ -19,9 +19,9 @@ const Messages = () => {
 
     const router = useRouter();
 
-    useEffect(() => {
+    useEffect(async () => {
         socket.on('new-message', (newMessage) => {
-            setMessages(newMessage);
+            await setMessages(newMessage);
             console.log('asdf', messages);
             console.log('state user', state.user);
             chatWindow();
