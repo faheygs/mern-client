@@ -10,7 +10,7 @@ const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
     reconnection: true
 });
 
-const Home = () => {
+const Home = ({ posts }) => {
     const [state, setState] = useContext(UserContext);
     const [newsFeed, setNewsFeed] = useState([]);
 
