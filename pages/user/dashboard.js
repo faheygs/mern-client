@@ -84,7 +84,7 @@ const Home = () => {
                 socket.emit('new-post', data);
             }
         } catch(e) {
-            console.log(e);
+            console.log("asdfasdfsdafasdf", e);
         }
     }
 
