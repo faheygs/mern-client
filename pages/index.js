@@ -13,7 +13,7 @@ const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
 const Home = () => {
     const [state, setState] = useContext(UserContext);
     const [newsFeed, setNewsFeed] = useState([]);
-    const [posts, setPosts] = useState();
+    const [posts, setPosts] = useState(null);
 
     useEffect(() => {
         loadPosts();
