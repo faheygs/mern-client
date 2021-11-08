@@ -13,7 +13,7 @@ const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
 const Home = () => {
     const [state, setState] = useContext(UserContext);
     const [newsFeed, setNewsFeed] = useState([]);
-    const [posts, setPosts] = useState(null);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         loadPosts();
@@ -24,7 +24,7 @@ const Home = () => {
 
     const loadPosts = async () => {
         const { data } = await axios.get('/posts');
-        setPosts(data);
+        setPosts([data, ...posts]);
     };
 
     const head = () => {
