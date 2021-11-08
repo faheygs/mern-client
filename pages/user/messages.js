@@ -81,8 +81,9 @@ const Messages = () => {
     };
 
     const chatWindow = () => {
+        console.log("Messages", messages);
         const tempChat = [];
-        if(state && state.user && state.user.messages && chatUser && chatUser.messages && messages) {
+        if(state && state.user && state.user.messages && messages) {
             state.user.messages.forEach(cm => {
                 if(cm.sentTo == chatUser._id) {
                     tempChat.push({
@@ -108,6 +109,7 @@ const Messages = () => {
             tempChat.sort((x, y) => {
                 return new Date(y.created) - new Date(x.created);
             });
+            console.log("Temp Chat",tempChat);
             setChat(tempChat);
         }
     };
