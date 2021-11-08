@@ -24,7 +24,7 @@ const Home = () => {
 
     const loadPosts = async () => {
         const { data } = await axios.get('/posts');
-        setPosts([data]);
+        setPosts(data);
     };
 
     const head = () => {
