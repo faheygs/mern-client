@@ -73,10 +73,8 @@ const Home = () => {
 
         try {
             const { data } = await axios.post('/create-post', { content, image });
-            console.log(data);
-            console.log("we got the data");
+            
             if(data.error) {
-                console.log("we made it to the if statement");
                 toast.error(data.error);
             } else {
                 setPage(1);
