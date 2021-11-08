@@ -20,10 +20,8 @@ const Messages = () => {
     const router = useRouter();
 
     useEffect(() => {
-        socket.on('new-message', async (newMessage) => {
-            await setMessages(newMessage);
-            console.log('asdf', messages);
-            console.log('state user', state.user);
+        socket.on('new-message', (newMessage) => {
+            setMessages(newMessage);
             chatWindow();
         });
     }, []);
@@ -35,10 +33,10 @@ const Messages = () => {
     }, [state && state.token]);
 
     useEffect(() => {
-        if(chatUser && chat && messages) {
+        if(chat) {
             chatWindow();   
         }
-    }, [chatUser && chat && messages]);
+    }, [chat]);
 
     const fetchPeople = async () => {
         try {
@@ -83,7 +81,6 @@ const Messages = () => {
     };
 
     const chatWindow = () => {
-        console.log("Messages", messages);
         const tempChat = [];
         if(state && state.user && state.user.messages && messages) {
             state.user.messages.forEach(cm => {
@@ -111,7 +108,6 @@ const Messages = () => {
             tempChat.sort((x, y) => {
                 return new Date(y.created) - new Date(x.created);
             });
-            console.log("Temp Chat",tempChat);
             setChat(tempChat);
         }
     };
