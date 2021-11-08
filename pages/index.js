@@ -10,15 +10,22 @@ const socket = io(process.env.NEXT_PUBLIC_SOCKETIO, {
     reconnection: true
 });
 
-const Home = ({ posts }) => {
+const Home = () => {
     const [state, setState] = useContext(UserContext);
     const [newsFeed, setNewsFeed] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        loadPosts();
         socket.on('new-post', (newPost) => {
             setNewsFeed([newPost, ...posts]);
         });
     }, []);
+
+    const loadPosts = async () => {
+        const { data } = await axios.get('/posts');
+        setPosts(data);
+    };
 
     const head = () => {
         <Head>
@@ -50,14 +57,5 @@ const Home = ({ posts }) => {
         </>
     )
 };
-
-export async function getServerSideProps() {
-    const { data } = await axios.get('/posts');
-    return {
-        props: {
-            posts: data
-        }
-    }
-}
 
 export default Home;
