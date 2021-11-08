@@ -53,9 +53,10 @@ const Home = ({ posts }) => {
 
 export async function getServerSideProps() {
     const { data } = await axios.get('/posts');
+    const temp = JSON.stringify(data);
     return {
         props: {
-            posts: data
+            posts: temp
         }
     }
 }
