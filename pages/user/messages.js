@@ -22,6 +22,8 @@ const Messages = () => {
     useEffect(() => {
         socket.on('new-message', (newMessage) => {
             setMessages(newMessage);
+            console.log('asdf', messages);
+            console.log('state user', state.user);
             chatWindow();
         });
     }, []);
@@ -73,7 +75,7 @@ const Messages = () => {
                 localStorage.setItem('auth', JSON.stringify(auth));
 
                 setState({ ...state, user: data });
-                io.emit('new-message', data.messages);
+                socket.emit('new-message', data.messages);
             }
         } catch(e) {
             console.log(e);
