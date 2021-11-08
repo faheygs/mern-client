@@ -82,7 +82,7 @@ const Home = () => {
                 toast.success("Post created");
                 setContent('');
                 setImage({});
-                socket.emit('new-post', data);
+                // socket.emit('new-post', data);
             }
         } catch(e) {
             console.log(e);
