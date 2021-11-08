@@ -73,7 +73,7 @@ const Messages = () => {
                 localStorage.setItem('auth', JSON.stringify(auth));
 
                 setState({ ...state, user: data });
-                socket.emit('new-message', data.messages);
+                io.emit('new-message', data.messages);
             }
         } catch(e) {
             console.log(e);
