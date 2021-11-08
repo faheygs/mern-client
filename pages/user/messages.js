@@ -82,7 +82,7 @@ const Messages = () => {
 
     const chatWindow = () => {
         const tempChat = [];
-        if(state && state.user && state.user.messages && messages) {
+        if(state && state.user && state.user.messages && chatUser && chatUser.messages && messages) {
             state.user.messages.forEach(cm => {
                 if(cm.sentTo == chatUser._id) {
                     tempChat.push({
