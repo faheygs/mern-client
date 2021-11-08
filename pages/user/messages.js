@@ -33,10 +33,10 @@ const Messages = () => {
     }, [state && state.token]);
 
     useEffect(() => {
-        if(chat) {
+        if(chatUser && chat) {
             chatWindow();   
         }
-    }, [chat]);
+    }, [chatUser && chat]);
 
     const fetchPeople = async () => {
         try {
