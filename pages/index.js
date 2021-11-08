@@ -16,16 +16,10 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        loadPosts();
-        socket.on('new-post', (newPost) => {
-            setNewsFeed([newPost, ...posts]);
+        socket.on("new-post", (newPost) => {
+          setNewsFeed([newPost, ...posts]);
         });
-    }, []);
-
-    const loadPosts = async () => {
-        const { data } = await axios.get('/posts');
-        setPosts(data);
-    };
+      }, []);
 
     const head = () => {
         <Head>
@@ -57,5 +51,15 @@ const Home = () => {
         </>
     )
 };
+
+export async function getServerSideProps() {
+    const { data } = await axios.get("/posts");
+    // console.log(data);
+    return {
+      props: {
+        posts: data,
+      },
+    };
+  }
 
 export default Home;
