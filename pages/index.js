@@ -24,7 +24,8 @@ const Home = () => {
 
     const loadPosts = async () => {
         const { data } = await axios.get('/posts');
-        setNewsFeed([data, ...posts]);
+        console.log(data);
+        setPosts(data);
     };
 
     const head = () => {
