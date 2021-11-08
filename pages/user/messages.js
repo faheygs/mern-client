@@ -21,7 +21,7 @@ const Messages = () => {
 
     useEffect(() => {
         socket.on('new-message', (newMessage) => {
-            setMessages(newMessage);
+            setMessages([newMessage, ...messages]);
             chatWindow();
         });
     }, []);
